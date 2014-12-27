@@ -1,0 +1,39 @@
+#education1,#education2,#education3,#education4,#education5,#education6,#education7,#education8,#education9,#education10,#employment1,#employment2,#employment3,#employment4,#employment5,#employment6,#employment7,#employment8,#employment9,#employment10
+	{
+	display: none
+}
+
+
+body {
+	background: #1f1f1f;
+}
+
+.error{
+	color:red;
+}
+
+.dash-unit {
+	border: 1px solid #383737;
+	background-image: url('../img/sep-half.png');
+	background-color: #3d3d3d;
+	color: white;
+}
+
+.dash-unit:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow: 3px 3px 2px 0px #151515;
+	-webkit-box-shadow: 3px 3px 2px 0px #151515;
+	box-shadow: 3px 3px 2px 0px #151515;
+}
+
+.input-group{
+	margin:2%;
+}
+
+legend{
+	color:#b2c831;
+}
+
+.apply-button {
+	margin-top:2%;
+}

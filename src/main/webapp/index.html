@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Positions</title>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/positions.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Open positions</p>
+            </div>
+        </div>
+    </nav>
+  <div class="container">
+	<div data-bind="foreach: viewModel" class="positions" id="positions">
+	 <div class="row">
+		<div class="position dash-unit col-lg-7 col-md-7" id="position">
+			<h1 class="" data-bind="text: title"></h1>
+			<div class="content">
+		    	<p data-bind="text: description"></p>
+			</div>
+		</div>
+		<div class="col-lg-5 col-md-5 content">
+			 <a class="btn btn-success btn-lg " data-bind="attr: {href: 'application.html?position=' + id }" >
+  			<span class="glyphicon glyphicon-play"></span> Apply
+			</a>
+         </div>
+	</div>
+	   <hr>
+	</div>
+  </div>
+</body>
+<script type='text/javascript' src='scripts/positions.js'></script>
+</html>

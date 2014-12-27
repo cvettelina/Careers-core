@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/positions.css">
+<link rel="stylesheet" type="text/css" href="css/users.css">
+<title>My account</title>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+               <p class="navbar-brand">Welcome <span data-bind="text: username"></span></p>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a data-bind="attr: {href: 'users.html?user=' + userId() }">Home</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div class="outer">
+<div class="middle">
+<div class="inner">
+<div class="container">
+ 	<div class="row">
+	 	<div class="col-md-6">
+	 		 <p class="error"></p>
+	 		 <div class="dash-unit">
+	 			 <h1><a href="applications.html">See all applications</a></h1>
+	 		 </div>	
+    	</div>
+    	<div class="col-md-6">	
+    		<div class="dash-unit">
+    			<h1><a href="edit_positions.html">Positions</a></h1>
+    		</div>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-6">	
+    		<div class="dash-unit">
+    			<h1><a href="schedule.html">My schedule</a></h1>
+	 		</div>
+		</div>
+		<div class="col-md-6">
+    		<div class="dash-unit">
+    			<h1><a href="change_pass.html">Change password</a></h1>
+	 		</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='scripts/users.js'></script>
+</body>
+</html>

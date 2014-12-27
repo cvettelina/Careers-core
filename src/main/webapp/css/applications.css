@@ -1,0 +1,75 @@
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.info {
+	display: none;
+}
+
+body {
+	background: #4f4f4f url('../img/suns.jpg') no-repeat fixed center;
+	background-size: cover;
+}
+
+#left {
+	background: rgba(0, 0, 0, .075);
+}
+
+.dash-unit {
+	width: 100%;
+	height: 50px; border : 1px solid #383737;
+	background-image: url('../img/sep-half.png');
+	background-color: #3d3d3d;
+	color: white;
+	border: 1px solid #383737;
+}
+
+.application {
+	padding:2%;
+	background-image: url('../img/sep-half.png');
+	background-color: #3d3d3d;
+	color: white;
+	border: 1px solid #383737;
+	margin-bottom: 5px;
+}
+
+legend {
+	color: #b2c831;
+}
+
+.dash-unit h1 {
+	color: #b2c831;
+	border-bottom: 1px dashed black;
+}
+
+#filter {
+	width: 100%;
+}
+
+.dash-unit:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow: 3px 3px 2px 0px #151515;
+	-webkit-box-shadow: 3px 3px 2px 0px #151515;
+	box-shadow: 3px 3px 2px 0px #151515;
+}
+
+@media ( min-width : 768px) {
+	.sidebar-nav .navbar .navbar-collapse {
+		padding: 0;
+		max-height: none;
+	}
+	.sidebar-nav .navbar ul {
+		float: none;
+	}
+	.sidebar-nav .navbar ul:not {
+		display: block;
+	}
+	.sidebar-nav .navbar li {
+		float: none;
+		display: block;
+	}
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <title>BLOCKS - Bootstrap Dashboard Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Carlos Alvarez - Alvarez.is">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <style type="text/css">
+      body {
+	        background: #4f4f4f url('img/suns.jpg') no-repeat fixed center;
+	        background-size: cover;
+	        color: white;
+      }
+      #external-events {
+        background: #4f4f4f;
+        border-radius: 5px;
+        font: 1.5em;
+        padding: 10px;
+      }
+      .external-event{
+      background-color:#b2c831;
+      padding: 5px;
+      }
+      
+    </style>
+
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  	
+  	<!-- FullCalendar Files - JS & CSS Configuration -->
+  	<link rel="stylesheet" type="text/css" href="css/fullcalendar.css">
+	<link rel="stylesheet" type="text/css" href="css/fullcalendar.print.css" media="print">
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.23.custom.min.js"></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+	<script type="text/javascript" src="scripts/fullcalendar.min.js"></script>
+
+<script type="text/javascript">
+
+  	<!-- FullCalendar Initializaiton -->
+
+	$(document).ready(function() {
+	
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaDay'
+			},
+			 events: function(start, end, callback) {
+		          loadInterviews(start, end, callback);
+		     },
+			editable: true,
+			eventStartEditable: false,
+			eventResize: function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
+		        editEvent(event.start, event.end, event.id);
+			},
+			eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
+		        editEvent(event.start, event.end, event.id);
+		    },
+		    dayClick: function(date, jsEvent, view) {
+
+		        // Go to and show day view for start date of clicked event
+		        $('#calendar').fullCalendar('gotoDate', date);
+		        $('#calendar').fullCalendar('changeView', "agendaDay");
+
+		    },
+		    eventClick: function(calEvent, jsEvent, view) {
+		        jsEvent.preventDefault();
+
+		        // Go to and show day view for start date of clicked event
+		        $('#calendar').fullCalendar('gotoDate', calEvent.start);
+		        $('#calendar').fullCalendar('changeView', "agendaDay");
+		    },
+		    ignoreTimezone: false,
+			droppable: true, // this allows things to be dropped onto the calendar !!!
+			drop: function(date, allDay) { // this function is called when something is dropped
+			
+				// retrieve the dropped element's stored Event Object
+				var originalEventObject = $(this).data('eventObject');
+				
+				// we need to copy it, so that multiple events don't have a reference to the same object
+				var copiedEventObject = $.extend({}, originalEventObject);
+				
+				// assign it the date that was reported
+				copiedEventObject.start = date;
+				copiedEventObject.allDay = allDay;
+				
+				// render the event on the calendar
+				// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+				$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+				$(this).remove();
+				createEvent(copiedEventObject);
+			}
+			
+		});
+	});
+
+</script>
+  </head>
+  <body>
+     <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Welcome <span data-bind="text: username"></span></p>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="users.html">Home</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<div class="container">
+
+		<div class="row">
+			<div id="external-events"  class="col-sm-3 col-lg-3">
+			    <h4>Approved people</h4>
+				<div data-bind="foreach: viewModel.applications">
+					<div class="external-event" data-bind="text: '[ ' + id + ' ] ' + personalInformation.firstName + ' ' + personalInformation.lastName, attr: {id: id }">
+					</div>
+				</div>
+        	</div>
+
+        	<div class="col-sm-9 col-lg-9">
+	        	<div id="calendar"></div>
+				<div style="clear:both"></div>
+			</div>
+	      </div>
+	   </div>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/admin.js"></script>
+    	<script type="text/javascript" src="scripts/schedule.js"></script>
+  
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit positions</title>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link rel="stylesheet" type="text/css" href="css/positions.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/edit.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Welcome <span data-bind="text: username"></span></p>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="users.html">Home</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ <div class="container">
+    <p class="error"></p>
+    	 <div class="row">
+		<div class="position dash-unit col-lg-7 col-md-7" >
+		<div class="item">
+			<input type="text" class="no-edit" id="title-1" readonly/>
+			</div>
+			<div class="item">
+		    	<textarea class="no-edit" id="desc-1" readonly></textarea>
+		    </div>	
+		    </div>
+		    	<div class="col-lg-5 col-md-5 content">
+		    	<button class="btn btn-success btn-lg editBut" value="-1" id="edit-1" onclick="enableEdit(this.value)">
+  					 Create new
+				</button>
+				<button class="btn btn-success btn-lg saveBut" value="-1" id="save-1" onclick="save(this.value, false)">
+  					 Save
+				</button>
+				</div>
+		</div>
+	<div data-bind="foreach: viewModel.positions" class="positions" id="positions">
+		 <div class="row">
+		<div class="position dash-unit col-lg-7 col-md-7" >
+		<div class="item">
+			<input type="text" class="no-edit" data-bind="value: title, attr: {id: 'title' + id}" readonly/>
+			</div>
+			<div class="item">
+		    	<textarea class="no-edit" data-bind="value: description, attr: {id: 'desc' + id}" readonly></textarea>
+		    </div>	
+		    </div>
+		    	<div class="col-lg-5 col-md-5 content">
+		    	<button class="btn btn-success btn-lg editBut" data-bind="value: id, attr: {id: 'edit' + id}" onclick="enableEdit(this.value)">
+  					 Edit
+				</button>
+				<button class="btn btn-success btn-lg saveBut" data-bind="value: id, attr: {id: 'save' + id}" onclick="save(this.value, true)">
+  					 Save
+				</button>
+				<button class="btn btn-danger btn-lg" data-bind="value: id, attr: {id: 'del' + id}" onclick="del(this.value)">
+  					 Delete
+				</button>
+				</div>
+		</div>
+	</div>
+  </div>
+</body>
+<script type='text/javascript' src='scripts/edit_positions.js'></script>
+</html>

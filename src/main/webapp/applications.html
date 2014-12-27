@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>All applications</title>
+
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="scripts/popup_script.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/applications.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Welcome <span data-bind="text: username"></span></p>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="users.html">Home</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ <div class="row">
+   <div class="col-sm-3">
+    <div class="sidebar-nav" >
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+        <ul class="nav navbar-nav" id="left">
+        <li >
+  		<select class="dash-unit" name="position" id="position"  data-bind="options: viewModel.positions,
+               optionsText: 'title',
+               optionsValue: 'id',
+               optionsCaption: 'Select position'"></select>
+      </li>
+      <li >
+		<select class="dash-unit" name="status" id="status" >
+		    <option value="">Select status</option>
+			<option value="NOT_CHECKED">Not checked</option>
+			<option value="APPROVED">Approved</option>
+			<option value="REJECTED">Rejected</option>
+		</select>
+		</li>
+		<li >
+		<select class="dash-unit" name="gender" id="gender"  >
+			<option value="">All</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+</li>
+<li >
+		<select class="dash-unit" name="qualificaton" id="qualificaton">
+		    <option value="">Select qualification</option>
+			<option value="No_Education">No Education</option>
+			<option value="Certificate">Certificate</option>
+			<option value="Diploma">Diploma</option>
+			<option value="Associate">Associate</option>
+			<option value="Bachelor">Bachelor</option>
+			<option value="Engineer">Engineer</option>
+			<option value="Master">Master</option>
+			<option value="Doctor">Doctor</option>
+		</select>
+</li>
+<li >
+		<select class="dash-unit" name="experience" id="experience" class="bootstrap-select">
+		    <option value="">Select experience</option>
+			<option value="0">No experience</option>
+			<option value="1">1 year</option>
+			<option value="2">2 years</option>
+			<option value="3">3 years</option>
+			<option value="4">4 years</option>
+			<option value="5">5 years</option>
+		</select>
+</li>
+<li >
+		<button onclick="filterApplications()"class="btn btn-success btn-sm " id="filter" >
+  					<span class="glyphicon glyphicon-play"></span> Filter</button>
+  					</li>
+  					</ul>
+  		</div>	
+	</div>
+</div>
+</div>
+<div class="col-sm-9">
+	<p class="error"></p>
+	<div data-bind="foreach: viewModel.applications" class="applications" id="applications">
+		<div class="application" >
+			<h1  data-bind="text: '[' + id + ']' + personalInformation.firstName + ' ' + personalInformation.lastName"></h1>
+			<div id="content">
+		    	<p>Qualification: <span data-bind="text: qualification"></span> Status: <span data-bind="text: status"></span></p>
+		    	<button class="btn btn-success btn-xs " onclick="$(this).next().show();$(this).hide()">
+  					<span class="glyphicon glyphicon-chevron-down"></span> More
+				</button>
+				<div class="info">
+				<button class="btn btn-success btn-xs " onclick="$(this).parent().hide();$(this).parent().prev().show()">
+  					<span class="glyphicon glyphicon-chevron-up"></span> Less
+				</button>
+				<p>Gender: <span data-bind="text: personalInformation.gender"></span></p>
+				<p>Date of birth: <span data-bind="text: personalInformation.dateOfBirth"></span></p>
+				<fieldset>
+					<legend>Address</legend>
+			    	<p>Country: <span data-bind="text: personalInformation.address.country"></span></p>
+			    	<p>City: <span data-bind="text: personalInformation.address.city"></span></p>
+			    	<p>Address line: <span data-bind="text: personalInformation.address.addressLine"></span></p>
+			    	<p>Phone number:<span data-bind="text: personalInformation.address.phoneNumber"></span></p>
+		    	</fieldset>
+		    	<p>Total experience: <span data-bind="text: totalExperience"></span></p>
+		    	<fieldset>
+		    		<legend>Education</legend>
+			    	<div class="education" data-bind="foreach: education">
+				    	<p>From <span data-bind="text: duration.startYear"></span> To <span data-bind="text: duration.endYear"></span></p>
+				    	<p>Country: <span data-bind="text: country"></span></p>
+				    	<p>City: <span data-bind="text: city"></span></p>
+				    	<p>School type: <span data-bind="text: schoolType"></span></p>
+				    	<p>School name: <span data-bind="text: schoolName"></span></p>
+				    	<p>Degree: <span data-bind="text: degree"></span></p>
+			    	</div>
+		    	</fieldset>
+		    	<fieldset>
+		    		<legend>Employment</legend>
+		    		<div class="employment" data-bind="foreach: employment">
+				    	<p>From <span data-bind="text: duration.startYear"></span> To <span data-bind="text: duration.endYear"></span></p>
+				    	<p>Country: <span data-bind="text: country"></span></p>
+				    	<p>City: <span data-bind="text: city"></span></p>
+				    	<p>Position: <span data-bind="text: position"></span></p>
+				    	<p>Company name: <span data-bind="text: companyName"></span></p>
+				    	<p>Description: <span data-bind="text: description"></span></p>
+			    	</div>
+		    	</fieldset>
+		      	<fieldset data-bind="if: personalSkills">
+		    		<legend>Social skills</legend>
+		    		<div class="skills">
+		    		<p data-bind="text: personalSkills"></p>
+		    		</div>
+		    	</fieldset>
+		    	<fieldset data-bind="if: technicalSkills">
+		    		<legend>Technical skills</legend>
+		    		<div class="skills">
+		    		<p data-bind="text: technicalSkills"></p>
+		    		</div>
+		    	</fieldset>
+		    	<div  data-bind="if: status == 'NOT_CHECKED' ">
+		    	<button class="btn btn-default" onclick="changeStatus('APPROVED', this)" data-bind="value: id"><span class="glyphicon glyphicon-ok green"></span></button><button class="btn btn-default" onclick="changeStatus('REJECTED', this)" data-bind="value: id"><span class="glyphicon glyphicon-remove red"></span></button>
+		    	</div>
+		    	<hr>
+		        <div class="positions" data-bind="foreach: positions">
+				    <span data-bind="text: title"></span>
+			    </div>
+		    	</div>
+			</div>
+		</div>
+	</div>
+  </div>
+  </div>
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+</body>
+
+<script type='text/javascript' src='scripts/applications.js'></script>
+</html>

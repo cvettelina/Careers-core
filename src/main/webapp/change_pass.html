@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Change password</title>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link rel="stylesheet" type="text/css" href="css/pass_change.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Welcome <span data-bind="text: username"></span></p>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="users.html">Home</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="outer">
+<div class="middle">
+<div class="inner">
+  <div class="container">
+        <div class="row">
+   		 <div class="col-lg-6 col-md-offset-3">
+   			<div class="block-unit">
+				<fieldset>
+					<p><input id="old-password" name="old-password" type="password" placeholder="Old Password" class="form-control"></p>
+					<p><input id="password" name="password" type="password" placeholder="Password" class="form-control"></p>	
+					<p><input id="repeat-password" name="repeat-password" type="password" placeholder="Repeat Password" class="form-control"></p>
+					<button class="btn-success btn btn-large" onclick="changePassword()">Change</button>
+				</fieldset>
+   			</div>
+   		</div>
+      </div>
+    </div>
+   </div>
+  </div>
+ </div>
+  <script type='text/javascript' src='scripts/login.js'></script> 
+</body>
+</html>

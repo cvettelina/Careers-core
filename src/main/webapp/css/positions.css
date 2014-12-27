@@ -1,0 +1,79 @@
+.content {
+	padding: 10px;
+}
+
+body {
+	background: #1f1f1f;
+}
+
+.dash-unit {
+	padding:10%;
+	padding-top:2%;
+	padding-bottom:2%;
+	border: 1px solid #383737;
+	background-image: url('../img/sep-half.png');
+	background-color: #3d3d3d;
+	color: white;
+}
+
+.row{
+	margin-bottom:2%;
+}
+
+.dash-unit:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow: 3px 3px 2px 0px #151515;
+	-webkit-box-shadow: 3px 3px 2px 0px #151515;
+	box-shadow: 3px 3px 2px 0px #151515;
+}
+
+.dash-unit h1 {
+	color: #b2c831;
+	border-bottom: 1px dashed black;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left, rgba(178,200,49, 0),
+		rgba(178,200,49, 0.75), rgba(178,200,49, 0));
+	background-image: -moz-linear-gradient(left, rgba(178,200,49, 0),
+		rgba(178,200,49, 0.75), rgba(178,200,49, 0));
+	background-image: -ms-linear-gradient(left, rgba(178,200,49, 0),
+		rgba(178,200,49, 0.75), rgba(178,200,49, 0));
+	background-image: -o-linear-gradient(left, rgba(178,200,49, 0),
+		rgba(178,200,49, 0.75), rgba(178,200,49, 0));
+}
+
+.outer {
+	display: table;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.inner {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+a{
+	text-decoration:none;
+	color: #b2c831;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+.no-edit {
+	width:100%;
+	background-color: #4f4f4f;
+	border:none;
+}

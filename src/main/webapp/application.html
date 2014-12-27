@@ -1,0 +1,890 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src='scripts/bootstrap.min.js'></script>
+<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/application.css">
+<title>Application</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-brand">Create application</p>
+            </div>
+        </div>
+    </nav>
+<div id="application"  class="container" title="Create new user">
+  <p class="error"></p>
+  <fieldset>
+ 	 <legend>Personal information</legend>
+ 	 <div class="container dash-unit">
+ 	 <div class="row">
+	 	 <div class="col-lg-6 col-md-6">
+		 	 <div class="input-group">
+		   		 <label for="firstName" class="input-group-addon">First name:</label>
+		    	 <input type="text" name="firstName" id="firstName" class="form-control" pattern = "[a-zA-Z]+(?:[\\s-][a-zA-Z]+)">
+		    </div>
+	    </div>
+	     <div class="col-lg-6 col-md-6">
+		    <div class="input-group">
+			    <label for="lastname" class="input-group-addon">Last name:</label>
+			    <input type="text" name="lastName" id="lastName" class="form-control" pattern = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$">
+		    </div>
+	    </div>
+    </div>
+      <div class="row">
+    	 <div class="col-lg-6 col-md-6">
+     		<div class="input-group">
+   				 <label for="birthDate" class="input-group-addon">Date of birth:</label>
+   				 <input type="date" name="birthDate" id="birthDate" class="form-control">
+       		 </div>
+       	</div>
+		<div class="col-lg-6 col-md-6">
+     		<div class="input-group">
+    			<label for="email" class="input-group-addon">Email</label>
+    			<input type="email" name="email" id="email" class="form-control">
+       		 </div>
+        </div>
+	</div>
+    <div class="row">
+	 	 <div class="col-lg-12">
+    		 <div>
+    			<label for="male" >Male:</label>
+    			<input type="radio" name="gender" id="male" value="Male" >
+   				 <label for="female">Female:</label>
+   				 <input type="radio" name="gender" id="female" value="Female">
+    		 </div>
+    	 </div>
+    </div>
+	</div>
+	</fieldset>
+    <fieldset>
+  		<legend>Address</legend>
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-lg-6 col-md-6">
+  		  		   <div class="input-group">
+	  				   <label for="country" class="input-group-addon">Country:</label>
+	  				   <select name="country" id="country" data-bind="foreach: items" class="form-control">
+					 	  <option data-bind="text: $data, value: $data"></option>
+			   		   </select>
+		   		   </div>
+		   		 </div>  
+		   	  <div class="col-lg-6 col-md-6">
+		   		 <div class="input-group">
+	  		 	   <label for="city" class="input-group-addon">City:</label>
+	    			<input type="text" name="city" id="city" class="form-control"  pattern = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$">
+    			</div>
+    		</div>
+    	</div>
+    	<div class="row">
+    	<div class="col-lg-6 col-md-6">		
+    		<div class="input-group">
+    		<label class="input-group-addon" for="addressLine">Address:</label>
+    		<input type="text" name="addressLine" id="addressLine" class="form-control">
+    		</div>
+    	</div>
+    	<div class="col-lg-6 col-md-6">	
+    		<div class="input-group">
+    		<label class="input-group-addon" for="phone">Phone:</label>
+    		<input type="tel" name="phone" id="phone" class="form-control">
+    		</div>
+    	</div>
+      </div>
+    </div>	
+  	</fieldset>
+  <fieldset>
+  	<legend>Education</legend>
+  	<button class="btn btn-success btn-sm" id="edBut1" onclick="show('edBut1', 'education1', null)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  	<div class='education' id="education1">
+  	 	<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  				 	<div class="input-group">
+    					<label class="input-group-addon" for="educationStartDate1">Start year:</label>
+    					<input type="text" name="educationStartDate1" id="educationStartDate1" class="form-control">
+   					</div>
+   				</div>
+   				<div class="col-md-4">	
+    				<div class="input-group">
+    					<label  for="educationEndDate1" class="input-group-addon">End year:</label>
+    					<input type="text" name="educationEndDate1" id="educationEndDate1" class="form-control">
+   					 </div>
+   				</div> 
+   				 <div class="col-md-4">
+    				<div class="input-group">
+    					<label for="educationCountry1" class="input-group-addon">Country:</label>
+    					<select name="educationCountry1" id="educationCountry1" data-bind="foreach: items" class="form-control">
+						     <option data-bind="text: $data, value: $data"></option>
+					    </select>
+					</div>
+				</div>
+   			</div>
+   			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="input-group">
+				    	<label for="educationCity1" class="input-group-addon">City</label>
+          		   		 <input type="text" name="educationCity1" id="educationCity1" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-lg-6 col-md-6">
+    			   <div class="input-group">
+            			<label for="schoolName1" class="input-group-addon">School name</label>
+            			<input type="text" name="schoolName1" id="schoolName1" class="form-control">
+      			   </div>
+    			</div>	
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+      				<div class="input-group">
+        			    <label for="schoolType1" class="input-group-addon">School type</label>
+          					<select name="schoolType1" id="schoolType1" class="form-control">
+            					<option value="" selected="selected">Select school type</option>
+            					<option value="Primary_School">Primary School</option>
+            					<option value="High_School">High School</option>
+            					<option value="Technical_School">Technical School</option>
+            					<option value="College">College</option>
+            					<option value="University">University</option>
+           					</select>
+     				</div>
+     			</div>
+     			<div class="col-lg-6 col-md-6">	
+     				<div class="input-group">
+        			    <label for="degree1" class="input-group-addon">Degree</label>
+         			 	   <select name="degree1" id="degree1" class="form-control">
+            					<option value="" selected="selected">Select degree</option>
+                   				<option value="Certificate">Certificate</option>
+            					<option value="Diploma">Diploma</option>
+            					<option value="Associate">Associate</option>
+            					<option value="Bachelor">Bachelor</option>
+            					<option value="Engeneer">Engeneer</option>
+            					<option value="Master">Master</option>
+            					<option value="Doctor">Doctor</option>
+         				   </select>
+     				</div>
+     			</div>
+     		</div>
+     	</div>	
+     	<div class="btn-group">		
+       		 <button class="btn btn-success btn-sm" id="edBut1hide" onclick="hide('edBut1', 'education1', 'education2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+ 			 <button class="btn btn-success btn-sm" id="edBut2" onclick="show('edBut2', 'education2', 'education1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='education' id="education2">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="educationStartDate2" class="input-group-addon">Start date:</label>
+    					<input type="text" name="educationStartDate2" id="educationStartDate2" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="educationEndDate2" class="input-group-addon">End date:</label>
+    					<input type="text" name="educationEndDate2" id="educationEndDate2" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="educationCountry2" class="input-group-addon">Country:</label>
+    					<select name="educationCountry2" id="educationCountry2" data-bind="foreach: items" class="form-control">
+			   				<option data-bind="text: $data, value: $data"></option>
+		    			</select>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="row">
+				<div class="col-lg-6 col-md-6">
+		   			 <div class="input-group" >
+		   				 <label for="educationCity2" class="input-group-addon">City</label>
+            			 <input type="text" name="educationCity2" id="educationCity2" class="form-control">
+            		 </div>
+            	</div> 
+            	<div class="col-lg-6 col-md-6">
+            		<div class="input-group">
+            			<label for="schoolName2" class="input-group-addon">School name</label>
+           				<input type="text" name="schoolName2" id="schoolName2" class="form-control">
+            		</div>
+            	</div>
+            </div>
+            <div class="row">
+				<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+           				 <label for="schoolType2" class="input-group-addon">School type</label>
+           				 <select name="schoolType2" id="schoolType2" class="form-control">
+            				<option value="" selected="selected">Select school type</option>
+            					<option value="Primary_School">Primary School</option>
+            					<option value="High_School">High School</option>
+            					<option value="Technical_School">Technical School</option>
+            					<option value="College">College</option>
+            					<option value="University">University</option>
+            			 </select>
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="degree2" class="input-group-addon">Degree</label>
+            			<select name="degree2" id="degree2" class="form-control">
+            				<option value="" selected="selected">Select degree</option>
+            					<option value="Certificate">Certificate</option>
+            					<option value="Diploma">Diploma</option>
+            					<option value="Associate">Associate</option>
+            					<option value="Bachelor">Bachelor</option>
+            					<option value="Engeneer">Engeneer</option>
+            					<option value="Master">Master</option>
+            					<option value="Doctor">Doctor</option>
+           				 </select>
+          		   </div>
+          		 </div>
+          	</div> 
+          </div>
+          <div class="btn-group">	 
+            <button class="btn btn-success btn-sm" id="edBut2hide" onclick="hide('edBut2', 'education2', 'education3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  		    <button class="btn btn-success btn-sm" id="edBut3" onclick="show('edBut3', 'education3', 'education2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='education' id="education3">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  	 			 	<div class="input-group">
+    					<label for="educationStartDate3" class="input-group-addon">Start date:</label>
+    					<input type="text" name="educationStartDate3" id="educationStartDate3" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="educationEndDate3" class="input-group-addon">End date:</label>
+    					<input type="text" name="educationEndDate3" id="educationEndDate3" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="input-group">
+    					<label for="educationCountry3" class="input-group-addon">Country:</label>
+    					<select name="educationCountry3" id="educationCountry3" data-bind="foreach: items" class="form-control">
+			  				<option data-bind="text: $data, value: $data"></option>
+	    				</select>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="row">
+				<div class="col-lg-6 col-md-6">	
+	    			<div class="input-group">
+		    			<label for="educationCity3" class="input-group-addon">City</label>
+            			<input type="text" name="educationCity3" id="educationCity3" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="schoolName3" class="input-group-addon">School name</label>
+            			<input type="text" name="schoolName3" id="schoolName3" class="form-control">
+            		</div>
+            	</div>	
+            </div>
+	    	<div class="row">
+				<div class="col-lg-6 col-md-6">
+            		<div class="input-group">
+            			<label for="schoolType3" class="input-group-addon">School type</label>
+            			<select name="schoolType3" id="schoolType3" class="form-control">
+            					<option value="" selected="selected">Select school type</option>
+            					<option value="Primary_School">Primary School</option>
+            					<option value="High_School">High School</option>
+            					<option value="Technical_School">Technical School</option>
+            					<option value="College">College</option>
+            					<option value="University">University</option>
+            			</select>
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+           				<label for="degree3" class="input-group-addon">Degree</label>
+            			<select name="degree3" id="degree3" class="form-control">
+            				<option value="" selected="selected">Select degree</option>
+            					<option value="Certificate">Certificate</option>
+            					<option value="Diploma">Diploma</option>
+            					<option value="Associate">Associate</option>
+            					<option value="Bachelor">Bachelor</option>
+            					<option value="Engeneer">Engeneer</option>
+            					<option value="Master">Master</option>
+            					<option value="Doctor">Doctor</option>
+            			</select>
+            		</div>
+            	</div>
+            </div>
+         </div>
+         <div class="btn-group">	
+            <button class="btn btn-success btn-sm" id="edBut3hide" onclick="hide('edBut3', 'education3', 'education4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  			<button class="btn btn-success btn-sm" id="edBut4" onclick="show('edBut4', 'education4', 'education3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='education' id="education4">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="educationStartDate4" class="input-group-addon">Start date:</label>
+    					<input type="text" name="educationStartDate4" id="educationStartDate4" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="input-group">
+    					<label for="educationEndDate4" class="input-group-addon">End date:</label>
+    					<input type="text" name="educationEndDate4" id="educationEndDate4" class="form-control">
+    				</div>
+    			</div>
+    		<div class="col-md-4">		
+    			<div class="input-group">
+    				<label for="educationCountry4" class="input-group-addon">Country:</label>
+    				<select name="educationCountry4" id="educationCountry4" data-bind="foreach: items" class="form-control">
+					     <option data-bind="text: $data, value: $data"></option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-md-6">		
+				<div class="input-group">
+		  		  <label for="educationCity4" class="input-group-addon">City</label>
+          		  <input type="text" name="educationCity4" id="educationCity4" class="form-control">
+          	 	</div>
+           </div> 
+           <div class="col-lg-6 col-md-6">		
+           		<div class="input-group">
+            		<label for="schoolName4" class="input-group-addon">School name</label>
+            		<input type="text" name="schoolName4" id="schoolName4" class="form-control">
+            	</div>
+            </div>
+         </div>
+         <div class="row">
+			<div class="col-lg-6 col-md-6">	
+            	<div class="input-group">
+            		<label for="schoolType4" class="input-group-addon">School type</label>
+            		<select name="schoolType4" id="schoolType4" class="form-control">
+            					<option value="" selected="selected">Select school type</option>
+            					<option value="Primary_School">Primary School</option>
+            					<option value="High School">High School</option>
+            					<option value="Technical_School">Technical School</option>
+            					<option value="College">College</option>
+            					<option value="University">University</option>
+            		</select>
+            	</div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+            	<div class="input-group">
+            		<label for="degree4" class="input-group-addon" class="form-control">Degree</label>
+            		<select name="degree4" id="degree4">
+            			<option value="" selected="selected">Select degree</option>
+            			<option value="Engeneer">Engeneer</option>
+            		</select>
+            	</div>
+            </div>
+         </div> 	
+        </div> 
+        <div class="btn-group">
+            <button class="btn btn-success btn-sm" id="edBut4hide" onclick="hide('edBut4', 'education4', 'education5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-success btn-sm" id="edBut5" onclick="show('edBut5', 'education5', 'education4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='education' id="education5">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  	  				<div class="input-group">
+    					<label for="educationStartDate5" class="input-group-addon">Start date:</label>
+    					<input type="text" name="educationStartDate5" id="educationStartDate5" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="input-group">
+    					<label for="educationEndDate5" class="input-group-addon">End date:</label>
+    					<input type="text" name="educationEndDate5" id="educationEndDate5" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="educationCountry5" class="input-group-addon">Country:</label>
+    					<select name="educationCountry5" id="educationCountry5" data-bind="foreach: items" class="form-control">
+			     			<option data-bind="text: $data, value: $data"></option>
+		    			</select>
+		   			</div>
+		   		</div>
+		   	</div>
+		   	<div class="row">	
+		   		<div class="col-lg-6 col-md-6">	
+		    		<div class="input-group">
+		   				 <label for="educationCity5" class="input-group-addon">City</label>
+            			 <input type="text" name="educationCity5" id="educationCity5" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+           				 <label for="schoolName5" class="input-group-addon">School name</label>
+            			 <input type="text" name="schoolName5" id="schoolName5" class="form-control">
+           			</div>
+           		</div>
+           	</div>
+           	<div class="row">	
+		   		<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="schoolType5" class="input-group-addon">School type</label>
+            			<select name="schoolType5" id="schoolType5" class="form-control">
+            				<option value="" selected="selected">Select school type</option>
+            				<option value="University">University</option>
+            			</select>
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">
+            		<div class="input-group">
+            			<label for="degree5" class="input-group-addon">Degree</label>
+            			<select name="degree5" id="degree5" class="form-control">
+            				<option value="" selected="selected">Select degree</option>
+            				<option value="Engeneer">Engeneer</option>
+            			</select>
+            		</div>
+            	</div>
+            </div>
+          </div>  		
+            <button class="btn btn-success btn-sm" id="edBut5hide" onclick="hide('edBut5', 'education5', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+ 		 </div>
+  </fieldset>
+  <fieldset>
+  <legend>Employement</legend>
+  <button class="btn btn-success btn-sm" id="emBut1" onclick="show('emBut1', 'employment1', null)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  <div class='employment' id="employment1">
+  	<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate1" class="input-group-addon">Start date:</label>
+    					<input type="text" name="employmentStartDate1" id="employmentStartDate1" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="input-group">
+    					<label for="employmentEndDate1" class="input-group-addon">End date:</label>
+    					<input type="text" name="employmentEndDate1" id="employmentEndDate1" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentCountry1" class="input-group-addon" >Country:</label>
+    					<select name="employmentCountry1" id="employmentCountry1" data-bind="foreach: items" class="form-control">
+		    				 <option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+		   		<div class="col-lg-6 col-md-6">		
+					<div class="input-group">
+		   				 <label for="employmentCity1" class="input-group-addon">City</label>
+           				 <input type="text" name="employmentCity1" id="employmentCity1" class="form-control">
+           			</div>
+           		</div>
+           		<div class="col-lg-6 col-md-6">	
+           			<div class="input-group">
+            			<label for="companyName1" class="input-group-addon">Company name</label>
+            			<input type="text" name="companyName1" id="companyName1" class="form-control">
+            		</div>
+            	</div>
+            </div>
+            <div class="row">	
+		   		<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="position1" class="input-group-addon">Position</label>
+            			<input type="text" name="position1" id="position1" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="description1" class="input-group-addon">Description</label>
+            			<textarea name="description1" id="description1" class="form-control"></textarea>
+            		</div>
+            	</div>	
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-success btn-sm" id="emBut1hide" onclick="hide('emBut1', 'employment1', 'employment2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-success btn-sm" id="emBut2" onclick="show('emBut2', 'employment2', 'employment1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='employment' id="employment2">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate2" class="input-group-addon">Start year:</label>
+    					<input type="text" name="employmentStartDate2" id="employmentStartDate2" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentEndDate2" class="input-group-addon">End year:</label>
+    					<input type="text" name="employmentEndDate2" id="employmentEndDate2" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentCountry2" class="input-group-addon">Country:</label>
+    					<select name="employmentCountry2" id="employmentCountry2" data-bind="foreach: items" class="form-control">
+		    				 <option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+		   		<div class="col-lg-6 col-md-6">				
+					<div class="input-group">
+		    			<label for="employmentCity2" class="input-group-addon">City</label>
+            			<input type="text" name="employmentCity2" id="employmentCity2" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="companyName2" class="input-group-addon">Company name</label>
+            			<input type="text" name="companyName2" id="companyName2" class="form-control">
+            		</div>
+            	</div>
+            </div>
+            <div class="row">	
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="position2" class="input-group-addon">Position</label>
+            			<input type="text" name="position2" id="position2" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="description2" class="input-group-addon">Description</label>
+            			<textarea name="description2" id="description2" class="form-control"></textarea>
+            		</div>
+            	</div>
+            </div>
+          </div>
+          <div class="btn-group">  		
+               <button class="btn btn-success btn-sm" id="emBut2hide" onclick="hide('emBut2', 'employment2', 'employment3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+               <button class="btn btn-success btn-sm" id="emBut3" onclick="show('emBut3', 'employment3', 'employment2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='employment' id="employment3">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate3" class="input-group-addon">Start date:</label>
+    					<input type="text" name="employmentStartDate3" id="employmentStartDate3" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentEndDate3" class="input-group-addon">End date:</label>
+    					<input type="text" name="employmentEndDate3" id="employmentEndDate3" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="input-group">
+    					<label for="employmentCountry3" class="input-group-addon">Country:</label>
+    					<select name="employmentCountry3" id="employmentCountry3" data-bind="foreach: items" class="form-control">
+		    				 <option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+            	<div class="col-lg-6 col-md-6">			
+					<div class="input-group">
+		   				 <label for="employmentCity3">City</label>
+           				 <input type="text" name="employmentCity3" id="employmentCity3" class="form-control">
+           			 </div>
+           		</div>
+           		<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="companyName3" class="input-group-addon">Company name</label>
+            			<input type="text" name="companyName3" id="companyName3" class="form-control">
+            		</div>
+            	</div>
+            </div>
+            <div class="row">	
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="position3" class="input-group-addon">Position</label>
+            			<input type="text" name="position3" id="position3" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="description3" class="input-group-addon">Description</label>
+            			<textarea name="description3" id="description3" class="form-control"></textarea>
+            		</div>
+            	</div>
+            </div>
+        </div>
+        <div class="btn-group"> 		
+            <button class="btn btn-success btn-sm" id="emBut3hide" onclick="hide('emBut3', 'employment3', 'employment4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-success btn-sm" id="emBut4" onclick="show('emBut4', 'employment4', 'employment3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  	<div class='employment' id="employment4">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate4" class="input-group-addon">Start date:</label>
+    					<input type="text" name="employmentStartDate4" id="employmentStartDate4" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentEndDate4" class="input-group-addon">End date:</label>
+    					<input type="text" name="employmentEndDate4" id="employmentEndDate4" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentCountry4" class="input-group-addon">Country:</label>
+    					<select name="employmentCountry4" id="employmentCountry4" data-bind="foreach: items" class="form-control">
+		     				<option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>	
+			<div class="row">	
+            	<div class="col-lg-6 col-md-6">		
+					<div class="input-group">
+		    			<label for="employmentCity4" class="input-group-addon">City</label>
+            			<input type="text" name="employmentCity4" id="employmentCity4" class="form-control">
+            		</div>
+            	</div>
+           		<div class="col-lg-6 col-md-6">		
+           			<div class="input-group">
+           				<label for="companyName4" class="input-group-addon">Company name</label>
+           				<input type="text" name="companyName4" id="companyName4" class="form-control">
+           			</div>
+           		</div>
+           	</div>
+           	<div class="row">	
+           		<div class="col-lg-6 col-md-6">		
+           			<div class="input-group">
+           				<label for="position4" class="input-group-addon">Position</label>
+           				<input type="text" name="position4" id="position4" class="form-control">
+           			</div>
+           		</div>
+           		<div class="col-lg-6 col-md-6">	
+           			<div class="input-group">
+           				<label for="description4" class="input-group-addon">Description</label>
+           				<textarea name="description4" id="description4" class="form-control"></textarea>
+           			</div>
+           		</div>
+           	</div>
+          </div>
+          <div class="btn-group"> 		
+            <button class="btn btn-success btn-sm" id="emBut4hide" onclick="hide('emBut4', 'employment4', 'employment5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-success btn-sm" id="emBut5" onclick="show('emBut5', 'employment5', 'employment4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		  </div>
+  	</div>
+  	<div class='employment' id="employment5">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate5" class="input-group-addon">Start year:</label>
+    					<input type="text" name="employmentStartDate5" id="employmentStartDate5">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentEndDate5" class="input-group-addon">End year:</label>
+    					<input type="text" name="employmentEndDate5" id="employmentEndDate5" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentCountry5" class="input-group-addon">Country:</label>
+    					<select name="employmentCountry5" id="employmntCountry5" data-bind="foreach: items" class="form-control">
+		    				 <option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+           		<div class="col-lg-6 col-md-6">			
+					<div class="input-group">
+		    			<label for="employmentCity5" class="input-group-addon">City</label>
+            			<input type="text" name="employmentCity5" id="employmentCity5" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="companyName5" class="input-group-addon">Company name</label>
+           				<input type="text" name="companyName5" id="companyName5" class="form-control">
+            		</div>
+            	</div>
+            </div>
+            <div class="row">	
+           		<div class="col-lg-6 col-md-6">			
+            		<div class="input-group">
+            			<label for="position5" class="input-group-addon">Position</label>
+            			<input type="text" name="position5" id="position5" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="description5" class="input-group-addon">Description</label>
+            			<textarea name="description5" id="description5" class="form-control"></textarea>
+            		</div>
+            	</div>		
+            </div>
+         </div>
+         <div class="btn-group"> 
+            <button class="btn btn-success btn-sm" id="emBut5hide" onclick="hide('emBut5', 'employment5', 'employment6')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-success btn-sm" id="emBut6" onclick="show('emBut6', 'employment6', 'employment5')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  		</div>
+  	</div>
+  		<div class='employment' id="employment6">
+  			<div class="container dash-unit">
+ 	 			<div class="row">
+	 				 <div class="col-md-4">
+  						<div class="input-group">
+    						<label for="employmentStartDate6" class="input-group-addon">Start year:</label>
+    						<input type="text" name="employmentStartDate6" id="employmentStartDate6" class="form-control">
+    					</div>
+    				</div>
+    				<div class="col-md-4">	
+    					<div class="input-group">
+    						<label for="employmentEndDate6" class="input-group-addon">End year:</label>
+    						<input type="text" name="employmentEndDate6" id="employmentEndDate6" class="form-control">
+    					</div>
+    				</div>
+    				<div class="col-md-4">	
+    					<div class="input-group">
+    						<label for="employmentCountry6" class="input-group-addon">Country:</label>
+    						<select name="employmentCountry6" id="employmentCountry6" data-bind="foreach: items" class="form-control">
+		     					<option data-bind="text: $data, value: $data"></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">	
+           			<div class="col-lg-6 col-md-6">				
+						<div class="input-group">
+		    				<label for="employmentCity6" class="input-group-addon">City</label>
+            				<input type="text" name="employmentCity6" id="employmentCity6" class="form-control">
+            			</div>
+            		</div>
+            		<div class="col-lg-6 col-md-6">	
+            			<div class="input-group">
+            				<label for="companyName6" class="input-group-addon">Company name</label>
+            				<input type="text" name="companyName6" id="companyName6" class="form-control">
+            			</div>
+            		</div>
+            	</div>
+				<div class="row">	
+           			<div class="col-lg-6 col-md-6">	
+            			<div class="input-group">
+            				<label for="position6" class="input-group-addon">Position</label>
+            				<input type="text" name="position6" id="position6" class="form-control">
+            			</div>
+            		</div>
+            		<div class="col-lg-6 col-md-6">		
+            			<div class="input-group">
+            				<label for="description6" class="input-group-addon">Description</label>
+            				<textarea name="description6" id="description6" class="form-control"></textarea>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="btn-group"> 		
+           		 <button class="btn btn-success btn-sm" id="emBut6hide" onclick="hide('emBut6', 'employment6', 'employment7')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+           		 <button class="btn btn-success btn-sm" id="emBut7" onclick="show('emBut7', 'employment7', 'employment6')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  			</div>
+  	</div>
+  	<div class='employment' id="employment7">
+  		<div class="container dash-unit">
+ 	 		<div class="row">
+	 			 <div class="col-md-4">
+  					<div class="input-group">
+    					<label for="employmentStartDate7" class="input-group-addon">Start year:</label>
+    					<input type="text" name="employmentStartDate7" id="employmentStartDate7" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentEndDate7" class="input-group-addon">End year:</label>
+    					<input type="text" name="employmentEndDate7" id="employmentEndDate7" class="form-control">
+    				</div>
+    			</div>
+    			<div class="col-md-4">	
+    				<div class="input-group">
+    					<label for="employmentCountry7" class="input-group-addon">Country:</label>
+    					<select name="employmentCountry7" id="employmentCountry7" data-bind="foreach: items" class="form-control">
+		     				<option data-bind="text: $data, value: $data"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+           		<div class="col-lg-6 col-md-6">			
+					<div class="input-group">
+		    			<label for="employmentCity7" class="input-group-addon">City</label>
+            			<input type="text" name="employmentCity7" id="employmentCity7" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="companyName7" class="input-group-addon">Company name</label>
+            			<input type="text" name="companyName7" id="companyName7" class="form-control">
+            		</div>
+            	</div>
+            </div>
+			<div class="row">	
+           		<div class="col-lg-6 col-md-6">	
+            		<div class="input-group">
+            			<label for="position7" class="input-group-addon">Position</label>
+            			<input type="text" name="position7" id="position7" class="form-control">
+            		</div>
+            	</div>
+            	<div class="col-lg-6 col-md-6">		
+            		<div class="input-group">
+            			<label for="description7" class="input-group-addon">Description</label>
+            			<textarea name="description7" id="description7" class="form-control"></textarea>
+            		</div>
+            	</div>
+            </div>
+         </div>   		
+         <button class="btn btn-success btn-sm" id="emBut7hide" onclick="hide('emBut7', 'employment7', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  		</div>
+  </fieldset>
+  <div class="container">
+  	<div class="row">	
+		<div class="col-lg-6 col-md-6">		
+  			<fieldset>
+   				 <legend>Social skills</legend>
+  				 <textarea name="socialSkills" id="socialSkills" class="form-control"></textarea>
+  			</fieldset>
+  		</div>
+  		<div class="col-lg-6 col-md-6">	
+  			<fieldset>
+  				<legend>Technical skills</legend>
+  				<textarea name="technicalSkills" id="technicalSkills" class="form-control"></textarea>
+  			</fieldset>
+  		</div>
+  	</div>
+  </div>		
+</div>
+<div class="container apply-button">
+ 	 <div class="row">
+	 	 <div class="col-md-12">
+			<button class="btn btn-success btn-lg" onclick="apply()">Send application</button>
+		</div>
+	</div>
+</div>			
+</body>
+<script type='text/javascript' src='scripts/application.js'></script>
+</html>
