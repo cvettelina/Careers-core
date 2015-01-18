@@ -142,23 +142,19 @@ public class SecurityInterceptor implements ContainerRequestFilter {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            findUser = connection.prepareStatement("SELECT token, user_id, login_time FROM credentials WHERE token='" + token + "';");
+            findUser = connection.prepareStatement("SELECT c.token, c.user_id, c.login_time, u.password, u.type, u.active FROM credentials c JOIN user u ON c.user_id = u.id  WHERE token='" + token + "';");
             result = findUser.executeQuery();
             if (result.next()) {
                 credentialsEntity.setLoginTime(result.getTimestamp("login_time"));
                 userId = result.getLong("user_id");
-            } else {
-                return null;
-            }
-            findUser = connection.prepareStatement("SELECT password, type, active FROM user WHERE id=" + userId + ";");
-            result = findUser.executeQuery();
-            if (result.next()) {
                 UserEntity user = new UserEntity();
                 user.setType(result.getString("type"));
                 user.setId(userId);
                 user.setActive(result.getInt("active"));
                 user.setPassword(result.getString("password"));
                 credentialsEntity.setUser(user);
+            } else {
+                return null;
             }
         } catch (Exception ex) {
             log.error("Error while getting user data from DB", ex);

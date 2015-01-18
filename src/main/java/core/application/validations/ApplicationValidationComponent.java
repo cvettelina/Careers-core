@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -14,7 +13,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import core.application.entities.PersonEntity;
-import core.application.entities.PositionEntity;
 import core.application.exception.ApplicationException;
 import core.application.exception.ExceptionType;
 
@@ -24,7 +22,6 @@ import api.application.request.Duration;
 import api.application.request.Education;
 import api.application.request.Employment;
 import api.application.request.PersonalInformation;
-import api.application.request.Status;
 
 @Stateless
 public class ApplicationValidationComponent {

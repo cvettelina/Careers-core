@@ -18,7 +18,6 @@ import core.application.exception.ApplicationException;
 import core.application.exception.ExceptionType;
 import core.application.util.Hash;
 import api.application.request.ChangePasswordRequest;
-import api.application.request.Status;
 import api.application.request.User;
 
 @Stateless
@@ -64,8 +63,14 @@ public class UsersComponent {
         em.merge(user);
     }
 
-    public void changeStatus(Status newStatus) {
-
+    public void changeStatus(Integer newStatus, Long userId) {
+        UserEntity user = getUserEntityById(userId);
+        if (user == null) {
+            throw new ApplicationException(ExceptionType.UNKNOWN_USER);
+        }
+        user.setActive(newStatus);
+        user.setLastUpdated(new Date());
+        em.merge(user);
     }
 
     public UserEntity getUserEntityByName(String username) {

@@ -13,10 +13,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "APPLICATION", name = "USER")
-@NamedQueries({ @NamedQuery(name = UserEntity.GET_BY_NAME, query = "SELECT ue FROM UserEntity ue WHERE ue.username = :username")})
+@NamedQueries({ @NamedQuery(name = UserEntity.GET_BY_NAME, query = "SELECT ue FROM UserEntity ue WHERE ue.username = :username"),
+        @NamedQuery(name = UserEntity.GET_BY_EMAIL, query = "SELECT ue FROM UserEntity ue WHERE ue.email = :email") })
 public class UserEntity {
-    
+
     public static final String GET_BY_NAME = "GetByName";
+    public static final String GET_BY_EMAIL = "GetByEmail";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

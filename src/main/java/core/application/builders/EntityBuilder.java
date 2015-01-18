@@ -31,7 +31,7 @@ public class EntityBuilder {
         person.setLastName(personalInfo.getLastName());
         person.setEmail(personalInfo.getEmail());
         person.setDateOfBirth(personalInfo.getDateOfBirth());
-        person.setStatus(Status.NOT_CHECKED.name());
+        person.setStatus(Status.PENDING.name());
         person.setGender(personalInfo.getGender().name());
         AddressEntity address = buildAddress(personalInfo.getAddress());
         person.setAddress(address);

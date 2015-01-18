@@ -81,7 +81,7 @@ public class ApplicationsComponent {
             throw new ApplicationException(ExceptionType.UNKNOWN_USER);
         }
 
-        if (!Status.NOT_CHECKED.equals(Status.valueOf(person.getStatus()))) {
+        if (!Status.PENDING.equals(Status.valueOf(person.getStatus()))) {
             throw new ApplicationException(ExceptionType.UPDATE_NOT_ALLOWED);
         }
 

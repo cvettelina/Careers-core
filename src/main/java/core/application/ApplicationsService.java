@@ -63,7 +63,7 @@ public class ApplicationsService implements Applications {
 
     @Override
     public void changeStatus(Long applicationId, ChangeStatusRequest request) {
-        if (Status.NOT_CHECKED.equals(request.getStatus())) {
+        if (Status.PENDING.equals(request.getStatus())) {
             throw new InvalidParameterException();
         }
         applicationComponent.changeStatus(applicationId, request.getStatus(), request.getUserId());
