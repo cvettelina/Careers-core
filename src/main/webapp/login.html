@@ -8,8 +8,6 @@
 <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 <title>Log in</title>
 </head>
 <body>
@@ -22,10 +20,13 @@
    		    <p class="error"></p>
    			<div class="block-unit">
 				<fieldset>
+				    <legend><h1 id="title">Sign in</h1></legend>
 					<p><input id="username" name="username" type="text" placeholder="Username" class="form-control"></p>	
 					<p><input id="password" name="password" type="password" placeholder="Password" class="form-control"></p>
-					<button class="btn-success btn btn-large" onclick="login()">Login</button>
+					<button type="submit" class="btn-info btn btn-lg" onclick="login()" id = "submit">Sign in</button>
 				</fieldset>
+				<hr>
+				<p id ="copyright" >Copyright &copy; 2015 Tsvetitu. All rights reserved.</p>
    			</div>
    		</div>
       </div>

@@ -5,33 +5,52 @@
 
 
 body {
-	background: #1f1f1f;
+    background: #f0f9ff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
 }
+
+
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+
 
 .error{
 	color:red;
 }
 
-.dash-unit {
-	border: 1px solid #383737;
-	background-image: url('../img/sep-half.png');
-	background-color: #3d3d3d;
-	color: white;
+#application{
+	border: 1px solid white;
+    background: #f0f9ff;
+	color: black;
+   -webkit-border-radius: 3%;
+	-moz-border-radius: 3%;
+	border-radius: 3%;
+	padding: 2%;
 }
 
-.dash-unit:hover {
-	background-color: #4f4f4f;
-	-moz-box-shadow: 3px 3px 2px 0px #151515;
-	-webkit-box-shadow: 3px 3px 2px 0px #151515;
-	box-shadow: 3px 3px 2px 0px #151515;
+.main{
+    margin:2%;
 }
-
 .input-group{
 	margin:2%;
 }
 
 legend{
-	color:#b2c831;
+	color:#85E0FF;
+}
+
+lable {
+color:white;
 }
 
 .apply-button {

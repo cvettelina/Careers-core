@@ -12,7 +12,7 @@
 <title>Application</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <p class="navbar-brand">Create application</p>
@@ -21,87 +21,73 @@
     </nav>
 <div id="application"  class="container" title="Create new user">
   <p class="error"></p>
+  <div id="fieldset"  class="container" >
+  <div class="row">
+  <div class="col-lg-5 col-md-6 main">
   <fieldset>
  	 <legend>Personal information</legend>
- 	 <div class="container dash-unit">
- 	 <div class="row">
-	 	 <div class="col-lg-6 col-md-6">
 		 	 <div class="input-group">
 		   		 <label for="firstName" class="input-group-addon">First name:</label>
 		    	 <input type="text" name="firstName" id="firstName" class="form-control" pattern = "[a-zA-Z]+(?:[\\s-][a-zA-Z]+)">
 		    </div>
-	    </div>
-	     <div class="col-lg-6 col-md-6">
 		    <div class="input-group">
 			    <label for="lastname" class="input-group-addon">Last name:</label>
 			    <input type="text" name="lastName" id="lastName" class="form-control" pattern = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$">
 		    </div>
-	    </div>
-    </div>
-      <div class="row">
-    	 <div class="col-lg-6 col-md-6">
      		<div class="input-group">
    				 <label for="birthDate" class="input-group-addon">Date of birth:</label>
    				 <input type="date" name="birthDate" id="birthDate" class="form-control">
        		 </div>
-       	</div>
-		<div class="col-lg-6 col-md-6">
+       	
      		<div class="input-group">
     			<label for="email" class="input-group-addon">Email</label>
     			<input type="email" name="email" id="email" class="form-control">
        		 </div>
-        </div>
-	</div>
-    <div class="row">
-	 	 <div class="col-lg-12">
-    		 <div>
-    			<label for="male" >Male:</label>
-    			<input type="radio" name="gender" id="male" value="Male" >
-   				 <label for="female">Female:</label>
-   				 <input type="radio" name="gender" id="female" value="Female">
-    		 </div>
-    	 </div>
-    </div>
-	</div>
+
+  
+
 	</fieldset>
+	</div>
+  <div class="col-lg-5 col-md-6 main">
     <fieldset>
   		<legend>Address</legend>
-  		<div class="container dash-unit">
- 	 		<div class="row">
-	 			 <div class="col-lg-6 col-md-6">
   		  		   <div class="input-group">
 	  				   <label for="country" class="input-group-addon">Country:</label>
 	  				   <select name="country" id="country" data-bind="foreach: items" class="form-control">
 					 	  <option data-bind="text: $data, value: $data"></option>
 			   		   </select>
 		   		   </div>
-		   		 </div>  
-		   	  <div class="col-lg-6 col-md-6">
 		   		 <div class="input-group">
 	  		 	   <label for="city" class="input-group-addon">City:</label>
 	    			<input type="text" name="city" id="city" class="form-control"  pattern = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$">
     			</div>
-    		</div>
-    	</div>
-    	<div class="row">
-    	<div class="col-lg-6 col-md-6">		
     		<div class="input-group">
     		<label class="input-group-addon" for="addressLine">Address:</label>
     		<input type="text" name="addressLine" id="addressLine" class="form-control">
     		</div>
-    	</div>
-    	<div class="col-lg-6 col-md-6">	
     		<div class="input-group">
     		<label class="input-group-addon" for="phone">Phone:</label>
     		<input type="tel" name="phone" id="phone" class="form-control">
     		</div>
-    	</div>
-      </div>
-    </div>	
   	</fieldset>
+	</div>
+
+	</div>
+		<div class="row">
+     <div class="col-lg-11 main">
+	     <fieldset>
+  		<legend>Gender</legend>
+    			<label for="male" >Male:</label>
+    			<input type="radio" name="gender" id="male" value="Male" >
+   				 <label for="female">Female:</label>
+   				 <input type="radio" name="gender" id="female" value="Female">
+    </div>
+	 </fieldset>
+	</div>
+	</div>
   <fieldset>
   	<legend>Education</legend>
-  	<button class="btn btn-success btn-sm" id="edBut1" onclick="show('edBut1', 'education1', null)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  	<button class="btn btn-success btn-md" id="edBut1" onclick="show('edBut1', 'education1', null)"><span class="glyphicon glyphicon-plus"> Add education</span></button>
   	<div class='education' id="education1">
   	 	<div class="container dash-unit">
  	 		<div class="row">
@@ -172,8 +158,8 @@
      		</div>
      	</div>	
      	<div class="btn-group">		
-       		 <button class="btn btn-success btn-sm" id="edBut1hide" onclick="hide('edBut1', 'education1', 'education2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
- 			 <button class="btn btn-success btn-sm" id="edBut2" onclick="show('edBut2', 'education2', 'education1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+       		 <button class="btn btn-info btn-sm" id="edBut1hide" onclick="hide('edBut1', 'education1', 'education2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+ 			 <button class="btn btn-info btn-sm" id="edBut2" onclick="show('edBut2', 'education2', 'education1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='education' id="education2">
@@ -246,8 +232,8 @@
           	</div> 
           </div>
           <div class="btn-group">	 
-            <button class="btn btn-success btn-sm" id="edBut2hide" onclick="hide('edBut2', 'education2', 'education3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-  		    <button class="btn btn-success btn-sm" id="edBut3" onclick="show('edBut3', 'education3', 'education2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="edBut2hide" onclick="hide('edBut2', 'education2', 'education3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  		    <button class="btn btn-info btn-sm" id="edBut3" onclick="show('edBut3', 'education3', 'education2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='education' id="education3">
@@ -320,8 +306,8 @@
             </div>
          </div>
          <div class="btn-group">	
-            <button class="btn btn-success btn-sm" id="edBut3hide" onclick="hide('edBut3', 'education3', 'education4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-  			<button class="btn btn-success btn-sm" id="edBut4" onclick="show('edBut4', 'education4', 'education3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="edBut3hide" onclick="hide('edBut3', 'education3', 'education4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  			<button class="btn btn-info btn-sm" id="edBut4" onclick="show('edBut4', 'education4', 'education3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='education' id="education4">
@@ -388,8 +374,8 @@
          </div> 	
         </div> 
         <div class="btn-group">
-            <button class="btn btn-success btn-sm" id="edBut4hide" onclick="hide('edBut4', 'education4', 'education5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-            <button class="btn btn-success btn-sm" id="edBut5" onclick="show('edBut5', 'education5', 'education4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="edBut4hide" onclick="hide('edBut4', 'education4', 'education5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="edBut5" onclick="show('edBut5', 'education5', 'education4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='education' id="education5">
@@ -451,12 +437,12 @@
             	</div>
             </div>
           </div>  		
-            <button class="btn btn-success btn-sm" id="edBut5hide" onclick="hide('edBut5', 'education5', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="edBut5hide" onclick="hide('edBut5', 'education5', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
  		 </div>
   </fieldset>
   <fieldset>
   <legend>Employement</legend>
-  <button class="btn btn-success btn-sm" id="emBut1" onclick="show('emBut1', 'employment1', null)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+  <button class="btn btn-info btn-sm" id="emBut1" onclick="show('emBut1', 'employment1', null)"><span class="glyphicon glyphicon-chevron-down"></span></button>
   <div class='employment' id="employment1">
   	<div class="container dash-unit">
  	 		<div class="row">
@@ -511,8 +497,8 @@
             </div>
         </div>
         <div class="btn-group">
-            <button class="btn btn-success btn-sm" id="emBut1hide" onclick="hide('emBut1', 'employment1', 'employment2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-            <button class="btn btn-success btn-sm" id="emBut2" onclick="show('emBut2', 'employment2', 'employment1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut1hide" onclick="hide('emBut1', 'employment1', 'employment2')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut2" onclick="show('emBut2', 'employment2', 'employment1')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='employment' id="employment2">
@@ -569,8 +555,8 @@
             </div>
           </div>
           <div class="btn-group">  		
-               <button class="btn btn-success btn-sm" id="emBut2hide" onclick="hide('emBut2', 'employment2', 'employment3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-               <button class="btn btn-success btn-sm" id="emBut3" onclick="show('emBut3', 'employment3', 'employment2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+               <button class="btn btn-info btn-sm" id="emBut2hide" onclick="hide('emBut2', 'employment2', 'employment3')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+               <button class="btn btn-info btn-sm" id="emBut3" onclick="show('emBut3', 'employment3', 'employment2')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='employment' id="employment3">
@@ -627,8 +613,8 @@
             </div>
         </div>
         <div class="btn-group"> 		
-            <button class="btn btn-success btn-sm" id="emBut3hide" onclick="hide('emBut3', 'employment3', 'employment4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-            <button class="btn btn-success btn-sm" id="emBut4" onclick="show('emBut4', 'employment4', 'employment3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut3hide" onclick="hide('emBut3', 'employment3', 'employment4')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut4" onclick="show('emBut4', 'employment4', 'employment3')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   	<div class='employment' id="employment4">
@@ -685,8 +671,8 @@
            	</div>
           </div>
           <div class="btn-group"> 		
-            <button class="btn btn-success btn-sm" id="emBut4hide" onclick="hide('emBut4', 'employment4', 'employment5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-            <button class="btn btn-success btn-sm" id="emBut5" onclick="show('emBut5', 'employment5', 'employment4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut4hide" onclick="hide('emBut4', 'employment4', 'employment5')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut5" onclick="show('emBut5', 'employment5', 'employment4')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		  </div>
   	</div>
   	<div class='employment' id="employment5">
@@ -743,8 +729,8 @@
             </div>
          </div>
          <div class="btn-group"> 
-            <button class="btn btn-success btn-sm" id="emBut5hide" onclick="hide('emBut5', 'employment5', 'employment6')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-            <button class="btn btn-success btn-sm" id="emBut6" onclick="show('emBut6', 'employment6', 'employment5')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut5hide" onclick="hide('emBut5', 'employment5', 'employment6')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <button class="btn btn-info btn-sm" id="emBut6" onclick="show('emBut6', 'employment6', 'employment5')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   		</div>
   	</div>
   		<div class='employment' id="employment6">
@@ -801,8 +787,8 @@
             	</div>
             </div>
             <div class="btn-group"> 		
-           		 <button class="btn btn-success btn-sm" id="emBut6hide" onclick="hide('emBut6', 'employment6', 'employment7')"><span class="glyphicon glyphicon-chevron-up"></span></button>
-           		 <button class="btn btn-success btn-sm" id="emBut7" onclick="show('emBut7', 'employment7', 'employment6')"><span class="glyphicon glyphicon-chevron-down"></span></button>
+           		 <button class="btn btn-info btn-sm" id="emBut6hide" onclick="hide('emBut6', 'employment6', 'employment7')"><span class="glyphicon glyphicon-chevron-up"></span></button>
+           		 <button class="btn btn-info btn-sm" id="emBut7" onclick="show('emBut7', 'employment7', 'employment6')"><span class="glyphicon glyphicon-chevron-down"></span></button>
   			</div>
   	</div>
   	<div class='employment' id="employment7">
@@ -858,18 +844,18 @@
             	</div>
             </div>
          </div>   		
-         <button class="btn btn-success btn-sm" id="emBut7hide" onclick="hide('emBut7', 'employment7', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+         <button class="btn btn-info btn-sm" id="emBut7hide" onclick="hide('emBut7', 'employment7', null)"><span class="glyphicon glyphicon-chevron-up"></span></button>
   		</div>
   </fieldset>
   <div class="container">
   	<div class="row">	
-		<div class="col-lg-6 col-md-6">		
+		<div class="col-lg-5 col-md-6">		
   			<fieldset>
    				 <legend>Social skills</legend>
   				 <textarea name="socialSkills" id="socialSkills" class="form-control"></textarea>
   			</fieldset>
   		</div>
-  		<div class="col-lg-6 col-md-6">	
+  		<div class="col-lg-5 col-md-6">	
   			<fieldset>
   				<legend>Technical skills</legend>
   				<textarea name="technicalSkills" id="technicalSkills" class="form-control"></textarea>
@@ -881,7 +867,7 @@
 <div class="container apply-button">
  	 <div class="row">
 	 	 <div class="col-md-12">
-			<button class="btn btn-success btn-lg" onclick="apply()">Send application</button>
+			<button class="btn btn-info btn-lg" onclick="apply()">Send application</button>
 		</div>
 	</div>
 </div>			
