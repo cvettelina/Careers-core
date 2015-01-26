@@ -38,7 +38,7 @@ public class EntityBuilder {
         if (request.getEducation() != null) {
             buildEducation(request.getEducation(), person);
         } else {
-            person.setQualification(Degree.No_Education.getValue());
+            person.setQualification(Degree.NO_EDUCATION.getValue());
         }
         if (request.getEmployment() != null) {
             List<EmployementEntity> employement = buildEmployement(request.getEmployment(), person);
@@ -95,7 +95,7 @@ public class EntityBuilder {
 
     public void buildEducation(List<Education> education, PersonEntity person) {
         List<EducationEntity> educations = new ArrayList<EducationEntity>();
-        Degree degree = Degree.No_Education;
+        Degree degree = Degree.NO_EDUCATION;
         for (Education item : education) {
             EducationEntity entity = new EducationEntity();
             entity.setCity(item.getCity());
