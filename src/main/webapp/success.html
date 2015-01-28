@@ -8,6 +8,14 @@
 <style type="text/css">
 .outer {
 	display: table;
+	background: #f0f9ff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -19,21 +27,32 @@
 	width: 100%;
 }
 
+
 .inner {
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
+	border: 1px solid white;
+	padding-left:10%;
+	padding-right:10%;
+	padding-top:5%;
+	padding-bottom:2%;
+	background: #f0f9ff;
 }
 
-body {
-	background: #1f1f1f;
+h1 {
+   	color: #85E0FF;
+	text-align: center;
 }
-
 p{
-   	color: #b2c831;
+   	color: #85E0FF;
 	font-size: 1.8em;
 	text-align: center;
 }
+
+#copyright {
+color: #85E0FF;
+float:right;
+font-size: 1em;
+}
+
 </style>
 </head>
 <body>
@@ -41,7 +60,11 @@ p{
 <div class="middle">
 <div class="inner">
 <div>
-<p>Your application was successfully sent</p>
+<h1>Thank you!</h1>
+<p>Your application was successfully sent.</p>
+<p><a href="/careers" class="btn-info btn btn-lg">Go back</a><p>
+<hr>
+<p id ="copyright" >Copyright &copy; 2015 Tsvetitu. All rights reserved.</p>
 </div>
 </div>
 </div>
